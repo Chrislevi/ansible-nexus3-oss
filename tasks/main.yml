@@ -156,3 +156,10 @@
 
 - include: create_task_each.yml
   with_items: "{{ nexus_scheduled_tasks }}"
+
+- name: "Deploy Docker client conf"
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/docker/{{ item }}"
+  with_items:
+    - daemon.json
